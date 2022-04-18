@@ -11,4 +11,9 @@ public class FirstTest {
         System.setProperty("webdriver.chrome.driver", "/Users/aleksandr/Documents/Work/TechMeSkills/CODE_AQA18/TAF_AQA18/src/test/resources/chromedriver");
         WebDriver driver = new ChromeDriver();
     }
+
+    @Test
+    public void test1() {
+
+    }
 }
