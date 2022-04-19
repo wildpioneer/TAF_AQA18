@@ -1,26 +1,31 @@
 package tests;
 
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 import services.AdvancedDriver;
+import services.BrowsersService;
 import services.SimpleDriver;
 
 public class FirstTest {
 
     @Test
-    public void test1() {
+    public void simpleDriverTest() {
         SimpleDriver simpleDriver = new SimpleDriver();
-        simpleDriver.getDriver();
+        WebDriver driver = simpleDriver.getDriver();
+        driver.quit();
     }
 
     @Test
-    public void test2() {
+    public void advancedDriverTest() {
         AdvancedDriver simpleDriver = new AdvancedDriver();
-        simpleDriver.getDriver();
+        WebDriver driver = simpleDriver.getDriver();
+        driver.quit();
     }
 
     @Test
-    public void test3() {
-        AdvancedDriver simpleDriver = new AdvancedDriver();
-        simpleDriver.getDriver();
+    public void browsersServiceTest() {
+        BrowsersService browsersService = new BrowsersService();
+        WebDriver driver = browsersService.getDriver();
+        driver.quit();
     }
 }
