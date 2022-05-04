@@ -23,6 +23,6 @@ public class ProjectsOverviewPage extends BasePage {
     }
 
     public WebElement getTabByName(String tabName) {
-        return driver.findElement(By.xpath(tabLocator.replace("Replace", tabName)));
+        return waitsService.waitForExists(By.xpath(tabLocator.replace("Replace", tabName)));
     }
 }
