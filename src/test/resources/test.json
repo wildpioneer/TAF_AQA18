@@ -1,0 +1,21 @@
+{
+  "username": "Ivanov",
+  "age": 28,
+  "smoker": true,
+  "object": null,
+  "list": [
+    1,
+    2,
+    3
+  ],
+  "listfobjects": [
+    {
+      "param1": 1,
+      "param2": "dsdsdf"
+    },
+    {
+      "param1": 1,
+      "param2": "dsdsdf"
+    }
+  ]
+}
