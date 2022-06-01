@@ -1,6 +1,5 @@
 package baseEntities;
 
-import com.google.gson.Gson;
 import configuration.ReadProperties;
 import models.Project;
 import org.openqa.selenium.WebDriver;
@@ -14,9 +13,6 @@ import steps.NavigationStep;
 import utils.Listener;
 
 import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 @Listeners(Listener.class)
 public class BaseTest {
@@ -28,8 +24,10 @@ public class BaseTest {
 
     @BeforeTest
     public void prepareData() throws IOException {
+/*
         Reader reader = Files.newBufferedReader(Paths.get("projectResult.json"));
         mainProject = new Gson().fromJson(reader, Project.class);
+*/
     }
 
     @BeforeMethod
