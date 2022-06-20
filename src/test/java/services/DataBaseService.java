@@ -6,17 +6,16 @@ import org.slf4j.LoggerFactory;
 import java.sql.*;
 
 public class DataBaseService {
-    static final String HOST = "localhost";
-    static final String PORT = "5432";
+    static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
+    static final String PASS = "postgres";
     static final String USER = "postgres";
-    static final String PSW = "postgres";
-    static final String DATABASE_NAME = "postgres";
-    static final String JDBC = "jdbc:postgresql://" + HOST + ":" + PORT + "/" + DATABASE_NAME;
     Logger logger = LoggerFactory.getLogger(DataBaseService.class);
+
     Connection connection = null;
     Statement statement = null;
 
     public DataBaseService() {
+        logger.info("Start connection...");
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
@@ -25,7 +24,7 @@ public class DataBaseService {
         }
 
         try {
-            connection = DriverManager.getConnection(JDBC, USER, PSW);
+            connection = DriverManager.getConnection(DB_URL, USER, PASS);
         } catch (SQLException throwables) {
             logger.info(throwables.toString());
         }
@@ -34,14 +33,6 @@ public class DataBaseService {
             logger.info("You successfully connected to database.");
         } else {
             logger.info("Что-то пошло не так");
-        }
-    }
-
-    public void closeConnection() {
-        try {
-            connection.close();
-        } catch (SQLException throwables) {
-            logger.info(throwables.toString());
         }
     }
 
@@ -63,9 +54,9 @@ public class DataBaseService {
 
     public void executeSQL(String sql) {
         try {
-            logger.info("Результат выпронения запроса:" + getStatement().execute(sql));
-        } catch (SQLException e) {
-            logger.info(e.getMessage());
+            logger.info("Результат выполнения запроса: " + getStatement().execute(sql));
+        } catch (SQLException ex) {
+            logger.info(ex.getMessage());
         }
     }
 
@@ -78,4 +69,23 @@ public class DataBaseService {
 
         return null;
     }
+
+    public void closeStatement() {
+        try {
+            if (statement != null) {
+                statement.close();
+            }
+        } catch (SQLException ex) {
+            logger.info("Не удалось закрыть Statement...");
+        }
+    }
+
+    public void closeConnection() {
+        try {
+            connection.close();
+        } catch (SQLException throwables) {
+            logger.info(throwables.toString());
+        }
+    }
 }
+
