@@ -3,7 +3,7 @@
 <suite name="Main Suite" thread-count="2" parallel="methods">
     <test name="Smoke">
         <classes>
-            <class name="tests.SelenideTest"/>
+            <class name="tests.gui.SelenideTest"/>
         </classes>
     </test>
 </suite>
