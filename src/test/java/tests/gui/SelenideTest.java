@@ -40,6 +40,6 @@ public class SelenideTest {
         loginPage.password.setValue(ReadProperties.password());
         loginPage.loginButton.click();
 
-        $(".page_title").shouldBe(visible).shouldHave(text("All Projects"));
+        $(".page_title").shouldBe(visible).shouldHave(text("All Projects1"));
     }
 }
